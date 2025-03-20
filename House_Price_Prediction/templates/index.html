@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>House Price Prediction</h2>
+        <form method="POST">
+            <!-- Area Input -->
+            <label for="area">Enter Area:</label>
+            <input type="text" name="area" required>
+
+            <!-- Bedrooms Selection (New Line) -->
+            <br><br>
+            <label for="bedrooms">Bedrooms:</label>
+            <br>
+            <select id="bedrooms" name="bedrooms" class="advanced-select">
+                <option value="1">1 Bedroom</option>
+                <option value="2">2 Bedrooms</option>
+                <option value="3">3 Bedrooms</option>
+                <option value="4">4 Bedrooms</option>
+                <option value="5">5+ Bedrooms</option>
+            </select>
+
+            <!-- Bathrooms Selection (New Line) -->
+            <br><br>
+            <label for="bathrooms">Bathrooms:</label>
+            <br>
+            <select id="bathrooms" name="bathrooms" class="advanced-select">
+                <option value="1">1 Bathroom</option>
+                <option value="2">2 Bathrooms</option>
+                <option value="3">3 Bathrooms</option>
+                <option value="4">4+ Bathrooms</option>
+            </select>
+
+            <!-- Stories Selection -->
+            <br><br>
+            <label for="stories">Number of Stories:</label>
+            <br>
+            <select id="stories" name="stories" class="advanced-select">
+                <option value="1">1 Story</option>
+                <option value="2">2 Stories</option>
+                <option value="3">3 Stories</option>
+                <option value="4">4+ Stories</option>
+            </select>
+
+            <!-- Parking Selection -->
+            <br><br>
+            <label for="parking">Parking Spaces:</label>
+            <br>
+            <select id="parking" name="parking" class="advanced-select">
+                <option value="0">No Parking</option>
+                <option value="1">1 Parking Space</option>
+                <option value="2">2 Parking Spaces</option>
+                <option value="3">3+ Parking Spaces</option>
+            </select>
+
+            <!-- Checklist for Other Features -->
+            <br><br>
+            <div class="checklist">
+                <h3>Select Additional Features:</h3>
+                <label><input type="checkbox" name="mainroad" value="1"> Main Road</label>
+                <label><input type="checkbox" name="guestroom" value="1"> Guest Room</label>
+                <label><input type="checkbox" name="basement" value="1"> Basement</label>
+                <label><input type="checkbox" name="hotwaterheating" value="1"> Hot Water Heating</label>
+                <label><input type="checkbox" name="airconditioning" value="1"> Air Conditioning</label>
+                <label><input type="checkbox" name="prefarea" value="1"> Preferred Area</label>
+            </div>
+
+            <!-- Furnishing Status -->
+            <br><br>
+            <label for="furnishingstatus">Furnishing Status:</label>
+            <br>
+            <select id="furnishingstatus" name="furnishingstatus" class="advanced-select">
+                <option value="0">Unfurnished</option>
+                <option value="1">Semi-Furnished</option>
+                <option value="2">Furnished</option>
+            </select>
+
+            <br><br>
+            <input type="submit" value="Predict Price">
+        </form>
+
+        <!-- Display Prediction -->
+        {% if prediction is defined and prediction != None %}
+            <h3>Estimated Price: {{ prediction }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
